@@ -10,29 +10,30 @@
 <body>
     <main>
         <form action="" novalidate>
-            <div class="day">
+            <div class="day input-item">
                 <label for="day"> DAY</label>
-                <input type="number" id="day" name="day" class="day" required>
+                <input type="number" id="day" name="day" class="day" required aria-required="true" min="1" >
             </div>
 
-            <div class="month">
+            <div class="month input-item">
                 <label for="month">month</label>
-                <input type="number" id="month" class="month" required>
+                <input type="number" id="month" class="month" min="1" max="12" aria-required="true"  required >
             </div>
 
-            <div class="year">
+            <div class="year input-item">
                 <label for="year">YEAR</label>
-                <input type="number" id="year" name="year" class="year" required>
+                <input type="number" id="year" name="year" class="year" required max="2024" aria-required="true">
             </div>
 
             <button class="submit button"> <img  src="./assets/images/icon-arrow.svg"/></button>
         </form>
 
-        <div class="output container">
+        <div class="output-container">
           
-            <h2><span>38</span> years</h2>
-            <h2><span>3</span> months</h2>
-            <h2><span>26</span> days</h2>
+            <p><span id="age-in-years">38</span> years</p>
+            <p><span id="age-in-months">3</span> months</p>
+            <p><span id="age-in-days">26</span> days</p>
+
         </div>
     </main>
 <script src="./index.js"></script>

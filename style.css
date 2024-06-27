@@ -58,7 +58,65 @@ body {
 /* main styles */
 main {
     background-color: var(--White);
+    padding: 3rem;
+    border-radius: 1.5rem 1.5rem  20rem 1.5rem;
+    /* width: 65%; */
+}
+
+/* form styles */
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--Light-grey);
+}
+
+.input-item {
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
-    border-radius: 1.5rem 1.5rem  8rem 1.5rem;
-    width: 65%;
+}
+
+label {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: bold;
+    color: var(--Off-black);
+}
+
+input {
+    padding: 1rem ;
+    font-size: 2rem;
+    width: 10rem;
+    border: 1px solid var(--Light-grey);
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border: 1px solid var(--Off-black);
+}
+
+button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--Purple);
+    outline: none;
+    border: none;
+    position: relative;
+    top: 5rem;
+}
+
+p {
+    font-size: 6rem;
+    font-family: extraboldItalic;
+    text-transform: lowercase;
+    line-height: 1;
+    /* border: 1px solid blue; */
+}
+
+p span {
+    color: var(--Purple);
+    font-size: 6rem;
 }
