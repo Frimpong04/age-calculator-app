@@ -82,7 +82,7 @@ label {
     font-size: 1.2rem;
     text-transform: uppercase;
     font-family: bold;
-    color: var(--Off-black);
+    color: var(--Light-grey);
 }
 
 input {
@@ -91,21 +91,51 @@ input {
     width: 10rem;
     border: 1px solid var(--Light-grey);
     outline: none;
+    font-family: bold;
+}
+
+/* active input state */
+input:hover {
+    cursor: pointer;
+    border: 1px solid var(--Purple);
 }
 
 input[type="number"]:focus {
     border: 1px solid var(--Off-black);
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 button {
-    width: 4rem;
-    height: 4rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     background-color: var(--Purple);
     outline: none;
     border: none;
     position: relative;
     top: 5rem;
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--Off-black);
+}
+
+ button img {
+    padding: 1.5rem;
+    width: 100%;
+    height: 100%;
 }
 
 p {
