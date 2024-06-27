@@ -70,16 +70,19 @@ form {
     justify-content: space-evenly;
     margin-bottom: 3rem;
     border-bottom: 1px solid var(--Light-grey);
+    /* flex-wrap: wrap; */
+    /* border: 1px solid red; */
 }
 
 .input-item {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    /* flex: 10rem 1 1; */
 }
 
 label {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-transform: uppercase;
     font-family: bold;
     color: var(--Light-grey);
@@ -124,7 +127,7 @@ button {
     outline: none;
     border: none;
     position: relative;
-    top: 5rem;
+    top: 6.5rem;
 }
 
 button:hover {
@@ -138,7 +141,7 @@ button:hover {
     height: 100%;
 }
 
-p {
+.output-container p {
     font-size: 6rem;
     font-family: extraboldItalic;
     text-transform: lowercase;
@@ -149,4 +152,59 @@ p {
 p span {
     color: var(--Purple);
     font-size: 6rem;
+}
+
+/* error  */
+.error {
+    color: var(--Light-red);
+    margin-top: 0.5rem;
+    visibility: hidden;
+}
+
+
+@media screen and (max-width: 605px) {
+    main {
+        width: 90%;
+        position: relative;
+    }
+
+    form {
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .day, 
+    .month, 
+    .year {
+        flex-shrink: 1;
+    }
+
+    button {
+        left: 50%;
+        position: absolute;
+        top: 32%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    form {
+        justify-content: center;
+    }
+
+    .input-item {
+        flex-grow: 1;
+    }
+    input {
+       width: 6rem; 
+    }
+
+    button {
+        top: 34%;
+    }
+
+    .output-container p {
+        font-size: 4rem;
+    }
 }
