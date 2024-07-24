@@ -95,6 +95,7 @@ input {
     border: 1px solid var(--Light-grey);
     outline: none;
     font-family: bold;
+    transition: border 0.5s ease-in-out;
 }
 
 /* active input state */
@@ -128,11 +129,12 @@ button {
     border: none;
     position: relative;
     top: 6.5rem;
+    transition: background-color 0.5s ease-in-out;
 }
 
 button:hover {
     cursor: pointer;
-    background: var(--Off-black);
+    background-color: var(--Off-black);
 }
 
  button img {
@@ -155,7 +157,9 @@ p span {
 }
 
 /* error  */
-.error {
+.day-error,
+.month-error,
+.year-error {
     color: var(--Light-red);
     margin-top: 0.5rem;
     visibility: hidden;
