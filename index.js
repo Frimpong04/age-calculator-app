@@ -75,7 +75,15 @@ submitButton.addEventListener("click", (e) => {
    }
 
    if(yearInput) {
-        if(yearInput < 0 ||)
+        if(yearInput < 0 || yearInput > currentYear) {
+            yearError.style.visibility = "visible";
+            yearError.textContent = "Incorrect year";
+
+            ageInDays.textContent = "--";
+            ageInMonths.textContent = "--";
+            ageInYears.textContent = "--";
+
+        }
    }
 
 
