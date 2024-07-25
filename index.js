@@ -19,16 +19,25 @@ const submitButton = document.getElementById("submit-button");
 const form = document.querySelector("form");
 
 // current year
-const currentYear = new Date().getFullYear;
+const currentYear = new Date().getFullYear();
+
+
+
+
 
 // add eventListener to submit button
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("clicked");
     console.log(day.value , month.value, year.value, currentYear);
-     let dayInput = day.value;
-     let monthInput = month.value;
-     let yearInput = year.value;
+    console.log(currentYear)
+
+    let dayInput = Number(day.value);
+    let monthInput = Number(month.value);
+    let yearInput = Number(year.value);
+
+    let leapYear = yearInput % 4 === 0 ? true : false ;
+    console.log(leapYear);
 
    if(!dayInput) {
     dayError.style.visibility = "visible"; 
@@ -47,6 +56,46 @@ submitButton.addEventListener("click", (e) => {
 
      }
 
+     if(monthInput === 2  ) {
+        if(leapYear) {
+            if(dayInput > 28 || dayInput === 0  || dayInput < 0) {
+                dayError.style.visibility = "visible";
+                dayError.textContent = "February has 28 days in a leap year";
+                ageInDays.textContent = "--";
+                ageInMonths.textContent = "--";
+                ageInYears.textContent = "--";
+            }
+        } else {
+            if(dayInput > 29 || dayInput === 0 || dayInput < 0) {
+                dayError.style.visibility = "visible";
+                dayError.textContent = "February has 28 days in a leap year";
+                ageInDays.textContent = "--";
+                ageInMonths.textContent = "--";
+                ageInYears.textContent = "--";
+            }
+        }
+       
+     }
+
+     if(monthInput === 4 || monthInput === 9) {
+        if(dayInput > 30) {
+            dayError.style.visibility = "visible";
+            dayError.textContent = "enter correct day";
+            ageInDays.textContent = "--";
+            ageInMonths.textContent = "--";
+            ageInYears.textContent = "--";
+        }
+     }
+
+     if(monthInput !== 2 && monthInput !== 4 && monthInput !== 9) {
+        if(dayInput > 31 || dayInput < 0 || dayInput === 0) {
+            dayError.style.visibility = "visible";
+            dayError.textContent = "enter correct day";
+            ageInDays.textContent = "--";
+            ageInMonths.textContent = "--";
+            ageInYears.textContent = "--";
+        }
+     }
    }
 
    if(!monthInput) {
@@ -57,15 +106,15 @@ submitButton.addEventListener("click", (e) => {
 
    }
 
-   if(month) {
-        if(month < 0 || month === 0 || month > 12) {
-            monthError.style.visibility = "visible";
-            monthError.textContent = "incorrect month";
-            ageInDays.textContent = "--";
-            ageInMonths.textContent = "--";
-            ageInYears.textContent = "--";
-        }
-   }
+  
+    if(monthInput < 0 || monthInput > 12) {
+        monthError.style.visibility = "visible";
+        monthError.textContent = "incorrect month";
+        ageInDays.textContent = "--";
+        ageInMonths.textContent = "--";
+        ageInYears.textContent = "--";
+    }
+   
 
    if(!yearInput) {
         yearError.style.visibility = "visible";
@@ -74,17 +123,14 @@ submitButton.addEventListener("click", (e) => {
         ageInYears.textContent = "--";
    }
 
-   if(yearInput) {
-        if(yearInput < 0 || yearInput > currentYear) {
-            yearError.style.visibility = "visible";
-            yearError.textContent = "Incorrect year";
+    if(yearInput < 0 || yearInput > currentYear) {
+        yearError.style.visibility = "visible";
+        yearError.textContent = "birth year cant be future";
 
-            ageInDays.textContent = "--";
-            ageInMonths.textContent = "--";
-            ageInYears.textContent = "--";
-
-        }
-   }
+        ageInDays.textContent = "--";
+        ageInMonths.textContent = "--";
+        ageInYears.textContent = "--";
+    }
 
 
   
