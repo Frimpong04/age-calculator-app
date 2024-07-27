@@ -132,6 +132,21 @@ submitButton.addEventListener("click", (e) => {
         ageInYears.textContent = "--";
     }
 
+    // bith year
+    let birthDate = new Date(`${dayInput}/${monthInput}/${yearInput}`);
 
+    // current date
+    let nowInDay = new Date().getDay();
+    let nowInMonth = new Date().getMonth();
+    let nowInYear = new Date().getFullYear();
+
+    let currentDate = new Date(`${nowInDay}/${nowInMonth}/${nowInYear}`);
+
+    // differnce in time
+    let timeDifference = currentDate.getTime() - birthDate.getTime();
+
+    // difference in Days
+    let differenceInDays = Math.round(timeDifference / (1000 * 3600 * 24));
+    console.log("total number of days is : " + differenceInDays);
   
 });
