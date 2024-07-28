@@ -5,14 +5,28 @@ const month = document.getElementById("month");
 const year = document.getElementById("year");
 
 // age elements
-const ageInDays = document.getElementById("age-in-days");
-const ageInMonths = document.getElementById("age-in-months");
-const ageInYears = document.getElementById("age-in-years");
+let ageInDays = document.getElementById("age-in-days");
+let ageInMonths = document.getElementById("age-in-months");
+let ageInYears = document.getElementById("age-in-years");
 
 // error element 
 const dayError = document.querySelector(".day-error");
 const monthError = document.querySelector(".month-error");
 const yearError = document.querySelector(".year-error");
+
+
+// select all input elements
+day.addEventListener("click", () => {
+    dayError.style.visibility = "hidden";
+});
+
+month.addEventListener("click", () => {
+    monthError.style.visibility = "hidden";
+});
+
+year.addEventListener("click", () => {
+    yearError.style.visibility = "hidden";
+});
 
 // submit button
 const submitButton = document.getElementById("submit-button");
@@ -20,9 +34,6 @@ const form = document.querySelector("form");
 
 // current year
 const currentYear = new Date().getFullYear();
-
-
-
 
 
 // add eventListener to submit button
@@ -40,10 +51,11 @@ submitButton.addEventListener("click", (e) => {
     console.log(leapYear);
 
    if(!dayInput) {
-    dayError.style.visibility = "visible"; 
-    ageInDays.textContent = "--";
-    ageInMonths.textContent = "--";
-    ageInYears.textContent = "--";
+        dayError.style.visibility = "visible"; 
+        ageInDays.textContent = "--";
+        ageInMonths.textContent = "--";
+        ageInYears.textContent = "--";
+        return;
    }
    
    if(dayInput) {
@@ -53,7 +65,7 @@ submitButton.addEventListener("click", (e) => {
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
         ageInYears.textContent = "--";
-
+        return;
      }
 
      if(monthInput === 2  ) {
@@ -64,6 +76,7 @@ submitButton.addEventListener("click", (e) => {
                 ageInDays.textContent = "--";
                 ageInMonths.textContent = "--";
                 ageInYears.textContent = "--";
+                return;
             }
         } else {
             if(dayInput > 29 || dayInput === 0 || dayInput < 0) {
@@ -72,6 +85,7 @@ submitButton.addEventListener("click", (e) => {
                 ageInDays.textContent = "--";
                 ageInMonths.textContent = "--";
                 ageInYears.textContent = "--";
+                return;
             }
         }
        
@@ -84,6 +98,7 @@ submitButton.addEventListener("click", (e) => {
             ageInDays.textContent = "--";
             ageInMonths.textContent = "--";
             ageInYears.textContent = "--";
+            return;
         }
      }
 
@@ -94,6 +109,7 @@ submitButton.addEventListener("click", (e) => {
             ageInDays.textContent = "--";
             ageInMonths.textContent = "--";
             ageInYears.textContent = "--";
+            return;
         }
      }
    }
@@ -103,7 +119,7 @@ submitButton.addEventListener("click", (e) => {
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
         ageInYears.textContent = "--";
-
+        return;
    }
 
   
@@ -113,6 +129,7 @@ submitButton.addEventListener("click", (e) => {
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
         ageInYears.textContent = "--";
+        return;
     }
    
 
@@ -121,6 +138,7 @@ submitButton.addEventListener("click", (e) => {
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
         ageInYears.textContent = "--";
+        return;
    }
 
     if(yearInput < 0 || yearInput > currentYear) {
@@ -130,23 +148,51 @@ submitButton.addEventListener("click", (e) => {
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
         ageInYears.textContent = "--";
+        return;
     }
 
     // bith year
     let birthDate = new Date(`${dayInput}/${monthInput}/${yearInput}`);
+    console.log(birthDate);
 
     // current date
-    let nowInDay = new Date().getDay();
-    let nowInMonth = new Date().getMonth();
-    let nowInYear = new Date().getFullYear();
+    // let nowInDay = new Date().getDay();
+    // let nowInMonth = new Date().getMonth();
+    // let nowInYear = new Date().getFullYear();
+    // console.log(nowInDay, nowInMonth, nowInYear)
 
-    let currentDate = new Date(`${nowInDay}/${nowInMonth}/${nowInYear}`);
+    const currentDate = new Date();
+    const formattedLocalDate = currentDate.toLocaleDateString();
+    // const formattedInSpecifiedFormat = currentDate.toLocaleDateString(&quot;hi-IN&quot;);
+    console.log(formattedLocalDate);
+
+    // let currentDate = new Date(`${nowInDay}/${nowInMonth}/${nowInYear}`);
+    // console.log(currentDate);
 
     // differnce in time
     let timeDifference = currentDate.getTime() - birthDate.getTime();
+    console.log(timeDifference);
 
     // difference in Days
     let differenceInDays = Math.round(timeDifference / (1000 * 3600 * 24));
-    console.log("total number of days is : " + differenceInDays);
-  
+    console.log("total number of days is : " + differenceInDays + "days");
+
+    // convert days into years, months and days
+    let calcAgeInYears = Math.floor(differenceInDays/365);
+    let calcAgeInMonths = Math.floor(differenceInDays % 365 / 30);
+    let calcAgeInDays = Math.floor(differenceInDays % 365 % 30);
+
+
+    console.log(`${calcAgeInYears} years , ${calcAgeInMonths} months, ${calcAgeInDays} days`);
+    
+    // show in the ui
+    ageInDays.textContent = calcAgeInDays;
+    ageInMonths.textContent = calcAgeInMonths;
+    ageInYears.textContent = calcAgeInYears;
+    
+
+    // reset input fields
+    day.value = null;
+    month.value = null;
+    year.value = null;
 });
