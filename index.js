@@ -50,7 +50,7 @@ submitButton.addEventListener("click", (e) => {
     let leapYear = yearInput % 4 === 0 ? true : false ;
     console.log(leapYear);
 
-   if(!dayInput) {
+   if(!dayInput || isNaN(dayInput)) {
         dayError.style.visibility = "visible"; 
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
@@ -72,7 +72,7 @@ submitButton.addEventListener("click", (e) => {
         if(leapYear) {
             if(dayInput > 28 || dayInput === 0  || dayInput < 0) {
                 dayError.style.visibility = "visible";
-                dayError.textContent = "February has 28 days in a leap year";
+                dayError.textContent = "invalid entry";
                 ageInDays.textContent = "--";
                 ageInMonths.textContent = "--";
                 ageInYears.textContent = "--";
@@ -114,7 +114,7 @@ submitButton.addEventListener("click", (e) => {
      }
    }
 
-   if(!monthInput) {
+   if(!monthInput || isNaN(monthInput)) {
         monthError.style.visibility = "visible";
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
@@ -133,7 +133,7 @@ submitButton.addEventListener("click", (e) => {
     }
    
 
-   if(!yearInput) {
+   if(!yearInput || isNaN(yearInput)) {
         yearError.style.visibility = "visible";
         ageInDays.textContent = "--";
         ageInMonths.textContent = "--";
@@ -155,19 +155,11 @@ submitButton.addEventListener("click", (e) => {
     let birthDate = new Date(`${dayInput}/${monthInput}/${yearInput}`);
     console.log(birthDate);
 
-    // current date
-    // let nowInDay = new Date().getDay();
-    // let nowInMonth = new Date().getMonth();
-    // let nowInYear = new Date().getFullYear();
-    // console.log(nowInDay, nowInMonth, nowInYear)
 
     const currentDate = new Date();
     const formattedLocalDate = currentDate.toLocaleDateString();
     // const formattedInSpecifiedFormat = currentDate.toLocaleDateString(&quot;hi-IN&quot;);
     console.log(formattedLocalDate);
-
-    // let currentDate = new Date(`${nowInDay}/${nowInMonth}/${nowInYear}`);
-    // console.log(currentDate);
 
     // differnce in time
     let timeDifference = currentDate.getTime() - birthDate.getTime();
