@@ -18,6 +18,7 @@ const yearError = document.querySelector(".year-error");
 // select all input elements
 day.addEventListener("click", () => {
     dayError.style.visibility = "hidden";
+    
 });
 
 month.addEventListener("click", () => {
